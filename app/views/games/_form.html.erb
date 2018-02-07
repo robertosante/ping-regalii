@@ -1,12 +1,23 @@
 <%= simple_form_for(@game) do |f| %>
-  <%= f.error_notification %>
+  <% if @game.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+      <ul>
+        <% @game.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
 
   <div class="form-inputs">
     <%= f.input :game_date %>
     <%= f.association :challenger, label_method: :email, collection: current_user.user_challengers.order(:email)%>
     <%= f.input :user_score %>
     <%= f.input :challenger_score %>
-   
+    <%= f.full_error :token %>
   </div>
 
   <div class="form-actions">
