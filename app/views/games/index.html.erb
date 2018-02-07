@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Games</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Challenger</th>
+      <th>User score</th>
+      <th>Challenger score</th>
+      <th>Game date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.user_id %></td>
+        <td><%= game.challenger_id %></td>
+        <td><%= game.user_score %></td>
+        <td><%= game.challenger_score %></td>
+        <td><%= game.game_date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Game', new_game_path %>
