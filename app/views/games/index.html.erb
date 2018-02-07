@@ -1,26 +1,22 @@
-<p id="notice"><%= notice %></p>
+<h1>Games History</h1>
 
-<h1>Listing Games</h1>
-
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Challenger</th>
-      <th>User score</th>
-      <th>Challenger score</th>
-      <th>Game date</th>
+      <th>Date</th>
+      <th>Opponent</th>
+      <th>Score</th>
+      <th>Result</th>
     </tr>
   </thead>
 
   <tbody>
     <% @games.each do |game| %>
       <tr>
-        <td><%= game.user_id %></td>
-        <td><%= game.challenger_id %></td>
-        <td><%= game.user_score %></td>
-        <td><%= game.challenger_score %></td>
         <td><%= game.game_date %></td>
+        <td><%= game.challenger.email %></td>
+        <td><%= game.user_score%> - <%= game.challenger_score %></td>
+        <td><%= game.user_score > game.challenger_score ? 'Won' : 'Lost' %></td>
       </tr>
     <% end %>
   </tbody>
