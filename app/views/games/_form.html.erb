@@ -3,7 +3,7 @@
 
   <div class="form-inputs">
     <%= f.input :game_date %>
-    <%= f.association :challenger, label_method: :email %>
+    <%= f.association :challenger, label_method: :email, collection: current_user.user_challengers.order(:email)%>
     <%= f.input :user_score %>
     <%= f.input :challenger_score %>
    
@@ -11,6 +11,6 @@
 
   <div class="form-actions">
     <%= f.button :submit, class: 'btn-success' %>
-    <%= link_to :cancel, url_for(:back), class: 'btn btn-warning' %>
+    <%= link_to 'Back', games_path, class: 'btn btn-warning' %>
   </div>
 <% end %>

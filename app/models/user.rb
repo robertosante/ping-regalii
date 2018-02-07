@@ -4,4 +4,9 @@ class User < ActiveRecord::Base
   has_many :rounds
 
   scope :challengers, ->(user) { where("id != ?", user) }
+  scope :rankings, -> () { order("rating DESC") }
+
+  def user_challengers
+    User.challengers(id)
+  end
 end
